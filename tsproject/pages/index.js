@@ -21,7 +21,7 @@ export default function Home() {
             <code className={styles.code}>pages/index.js</code>
           </p>
           <p>
-            <a href='./index.js'>Home</a> | <a href='./about.js'>about</a> | <a href='./page1.js'>page1</a>
+            <a href='./'>Home</a> | <a href='./about'>about</a> | <a href='./page1'>page1</a>
           </p>
           <div>
             <a
