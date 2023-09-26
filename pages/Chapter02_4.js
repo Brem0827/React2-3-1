@@ -3,33 +3,38 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import Menu from "@/component/Menu";
+import Highlight from "@/component/Highlight";
 
 const inter = Inter({ subsets: ['latin'] })
+const codeExample = `function Highlight({ code, language = 'js' }) {
+    const { asPath } = useRouter();
 
+    useEffect(() => {
+        hljs.registerLanguage('javascript', javascript);
+        hljs.initHighlighting();
+    }, [asPath]);
 
+    return (
+        <>
+            <Head>
+                <link rel="stylesheet" href="../css/highlight.css" />
+            </Head>
+            <pre>
+        <code className={language}>{code}</code>
+      </pre>
+        </>
+    );
+}`;
 import { useEffect, useState } from 'react';
-import Highlight from '../component/Highlight';
 
-function UseEffectPage() {
+export default function Home(props) {
+
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  return (
-      <div>
-        {isClient &&
-            (<Highlight
-                code={"console.log('Hello, World')"}
-                language='js'
-            />)
-        }
-      </div>
-  );
-}
-
-export default function Home(props) {
   return (
     <>
       <Head>
@@ -66,7 +71,13 @@ export default function Home(props) {
         <Menu />
 
         <div className={styles.center}>
-          {UseEffectPage()}
+          <h1> React.useEffect Hook </h1>
+          <p className={styles.pageDiscription}>
+            Highlight.js uses the global <code>document</code> keyword for highlighting code. <br/>
+            Using the <code>React.useEffect</code> hook will make it highlighting the desire content
+            the client side, once the component has been mounted.
+          </p>
+          {isClient && <Highlight code={codeExample} language="js" />}
         </div>
 
         <div className={styles.grid}>

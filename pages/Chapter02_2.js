@@ -6,27 +6,19 @@ import Menu from "@/component/Menu";
 
 const inter = Inter({ subsets: ['latin'] })
 
+export async function getServerSideProps() {
+  const userRequest = await fetch('https://api.github.com/repos/vercel/next.js');
+  const userData = await userRequest.json();
 
-import { useEffect, useState } from 'react';
-import Highlight from '../component/Highlight';
+  return {
+    props: {
+      user: userData,
+    },
+  };
+}
 
-function UseEffectPage() {
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  return (
-      <div>
-        {isClient &&
-            (<Highlight
-                code={"console.log('Hello, World')"}
-                language='js'
-            />)
-        }
-      </div>
-  );
+function IndexPage(props) {
+  return <div>Welcome, {props.user.name}!</div>;
 }
 
 export default function Home(props) {
@@ -66,7 +58,7 @@ export default function Home(props) {
         <Menu />
 
         <div className={styles.center}>
-          {UseEffectPage()}
+          This is the Chapter02_2 page. Welcome {props.user.owner.url} !
         </div>
 
         <div className={styles.grid}>
