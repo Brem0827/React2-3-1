@@ -2,13 +2,10 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
-import Menu from "@/component/Menu";
+import Menu from "@/components/Menu";
+import Highlight from '../components/Highlight';
 
 const inter = Inter({ subsets: ['latin'] })
-
-
-import { useEffect, useState } from 'react';
-import Highlight from '../component/Highlight';
 
 function UseEffectPage() {
   const [isClient, setIsClient] = useState(false);
@@ -18,14 +15,14 @@ function UseEffectPage() {
   }, []);
 
   return (
-      <div>
-        {isClient &&
-            (<Highlight
-                code={"console.log('Hello, World')"}
-                language='js'
-            />)
-        }
-      </div>
+    <div>
+      {isClient &&
+        <Highlight
+          code={"console.log('Hello, World')"}
+          language='js'
+        />
+      }
+    </div>
   );
 }
 
@@ -67,9 +64,9 @@ export default function Home(props) {
 
         <div className={styles.center}>
           {UseEffectPage()}
-        </div>
+          </div>
 
-        <div className={styles.grid}>
+          <div className={styles.grid}>
           <a
             href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
             className={styles.card}
