@@ -195,6 +195,28 @@
 
 </details>
 
+<details><summary>💬 동적 라우팅 </summary>
+
+- /pages/posts/[slug].js 파일을 생성하고 다음과 같이 useRouter를 사용하면 파라미터를 사용할 수 있습니다.
+
+- 대괄호는 반드시 사용해야 하고, slug는 pid, category 등 원하는 것을 넣으면 됩니다.
+
+- useRouter 훅을 통해 해당 router 정보를 불러오거나, router.query 내에 설정한 변수와 변수 값을 확인 할 수있습니다.
+
+```tsx
+
+impoer { useRouter } from 'next/router'
+
+export default function Posts() {
+  const router = useRouter();
+  const { pid } = router.query;
+  return <p>Post: {pid}</p>;
+}
+
+```
+
+</details>
+
 ---
 # 3주차
 
