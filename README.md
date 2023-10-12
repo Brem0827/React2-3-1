@@ -31,6 +31,183 @@
 2. 💭[2주차](#2주차)➡️
 3. 💭[3주차](#3주차)➡️
 4. 💭[5주차](#5주차)➡️
+5. 💭[6주차](#6주차)➡️
+6. 💭[중간고사](#중간고사)➡️
+
+---
+# 중간고사
+
+🔋 2023.10.19
+
+<details><summary>💬 중간고사 </summary>
+
+- 
+
+</details>
+
+---
+# 6주차
+
+🔋 2023.10.12
+
+<details><summary>💬 라우팅 시스템 </summary>
+
+- React의 React Router, Reach Router 등은 클라이언트 라우팅만 구현할 수 있습니다.
+
+- Next는 파일시스템 기반 페이지와 라우팅을 합니다.
+
+- 페이지는 /pages 디렉토리 안의 *.js *.jsx *.ts *.tsx 파일에서 export한 React 컴포넌트 입니다.
+
+* 일반적인 경로
+
+- pages/index.js
+-> localhost:3000/
+
+- pages/blog/index.js
+-> localhost:3000/blog
+
+* 중첩라우팅
+
+- pages/blog/first-post.js
+-> localhost:3000/blog/first-post
+
+- pages/dashboard/settings/username.js
+-> localhost:3000/dashboard/settings/username
+
+</details>
+
+<details><summary>💬 동적 라우팅 </summary>
+
+- /pages/posts/[slug].js 파일을 생성하고 다음과 같이 useRouter를 사용하면 파라미터를 사용할 수 있습니다.
+
+- 대괄호는 반드시 사용해야 하고, slug는 pid, category 등 원하는 것을 넣으면 됩니다.
+
+- useRouter 훅을 통해 해당 router 정보를 불러오거나, router.query 내에 설정한 변수와 변수 값을 확인 할 수있습니다.
+
+- 동적인 라우팅 규칙을 만들려면 [slug].js 파일이 필요합니다.
+
+- [slug].js는 매개 변수로 사용되며, 주소창에서 입력하는 값을 모두 받을 수 있습니다.
+
+- 동적 라우팅 규칙을 중첩할 수도 있습니다.
+
+- getServerSideProps와 getStaticProps 함수는 반드시 객체를 반환해야 합니다.
+
+- 함수가 반환한 값을 페이지에서 사용할 때는 함수가 반환한 객체의 props 속성 값을 사용해야 합니다.
+
+```tsx
+
+impoer { useRouter } from 'next/router'
+
+export default function Posts() {
+  const router = useRouter();
+  const { pid } = router.query;
+  return <p>Post: {pid}</p>;
+}
+
+```
+
+</details>
+
+<details><summary>💬 동적 경로 매개 변수 </summary>
+
+```js
+
+<Link href='/blog/2023-10-12/happy-new-year'>Read post</Link>
+<Link href='/blog/2023-10-12/match-update'>Read post</Link>
+<Link href='/blog/2023-10-12/i-love-nextjs'>Read post</Link>
+
+```
+
+```js
+
+<Link
+  ref={{
+    pathname: '/blog/[date]/[slug]'
+    query: {
+      date: '2023-10-12'
+      slug: 'daelim'
+      foo: 'bar'
+    }
+  }}
+  >
+  Read post
+  </Link>
+
+```
+
+</details>
+
+<details><summary>💬 router.push </summary>
+
+- Link 컴포넌트 대신 useRouter Hook을 사용해서 다른 페이지로 이동할 수 있습니다.
+
+- 로그인을 한 사용자만 접근할 수 있는 페이지를 위한 useAuth라는 훅이 있다고 가정합시다.
+
+- 사용자가 로그인 하지 않았다면 useRouter 훅을 사용해서 로그인 페이지로 이동시킵니다.
+
+- router.push 메서드를 사용해서 로그인 페이지로 이동
+
+- Link 컴포넌트와는 다르게 연결된 페이지를 미리 불러오지 못합니다.
+
+- 클라이언트에서 네비게이션 구현에 router.push를 사용하는 것은 추천하지 않습니다.
+
+</details>
+
+<details><summary>💬 정적 자원 제공 </summary>
+
+- 정적 자원은 미지미, 폰트, 아이콘, 컴파일한 CSS 또는 JS 파일과 같이 동적으로 변하지 않는 모든 종류의 파일을 의미합니다.
+
+- 이러한 정적 자원은 /public 디렉터리 안에 저장하는 방식으로 클라이언트에 쉽게 제공합니다.
+
+- 정적 자원중 이미지 파일은 SEO에 많은 영향을 미칩니다.
+
+- 불러오는데 많은 시간이 걸리고, 불러온 후에도 이미지 주변의 레이아웃이 변경되는 등 UX 관점에서 좋지 않은 영향을 줍니다.
+
+- 이를 누적 레이아웃 이동 이라고 합니다.
+
+- Image 컴포넌트를 사용해서 이와 같은 CLS 문제를 해결합니다.
+
+</details>
+
+<details><summary>💬 자동 이미지 최적화 </summary>
+
+- Next.js 10부터는 Image 컴포넌트를 사용해서 이미지를 자동으로 최적화 할 수 있습니다.
+
+- Next.js가 이 기능을 제공하기 전에는 외부 도구를 사용해서 모든 이미지를 최적화 하고 HTML의 모든 <img> 태그에 복잡한 srcset 속성값을 지정해서 화면 크기별로 이미지를 조정했습니다.
+
+- 이미지 최적화 기능을 사용하면 이미지를 Webp와 같은 최신 이미지 포맷으로 제공할 수 있습니다.
+
+- 최신 포맥을 지원하지 않는 브라우저의 경우에는 png나 jpeg와 같은 예전 이미지 포맷도 제공합니다.
+
+- 필요한 경우 이미지 크기를 조정할 수도 있습니다.
+
+- 특히 클라이언트가 이미지를 요구할 때 최적화 작업을 한다는 장점이 있습니다.
+
+- 따라서 Unplash나 Pexel과 같은 외부 미이지 서비스로 이미지를 제공할 수 있습니다.
+
+```js
+
+module.exports = {
+  images: {
+    domains: ['images.unsplash.com']
+  }
+}
+
+```
+
+</details>
+
+<details><summary>💬 layout 속성값 </summary>
+
+- fixed : 이미지의 크기를 지정하면 화면의 크기와 상관 없이 이미지 크기를 유지합니다.
+
+- responsive : HTML img 태그와 같습니다. 이미지 크기를 지정하면 더 크거나 작은 화면에서도 이미지 크기를 조절하지 않고 지정한 대로 유지합니다.
+
+- intrinsic : fixed와 responsive를 절반씩 수용합니다. 크기가 작은 화면에서는 이미지 크기를 조절하지만 이미지 보다 큰 화면에서는 이미지 크기를 조절하지 않습니다.
+
+- fill : 부모 요소의 가로와 세로 크기에 따라 이미지를 늘립니다. layout에 fill을 지정한 경우 width와 height 속성값을 함께 지정할 수 없습니다. fill을 사용하는 것과 width / height 속성을 지정하는 것중 하나만 가능합니다.
+
+</details>
 
 ---
 # 5주차
