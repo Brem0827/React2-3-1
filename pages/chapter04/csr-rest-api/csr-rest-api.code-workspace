@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "csr-rest-api",
+			"path": "."
+		},
+		{
+			"name": "components",
+			"path": "../../../../../../Downloads/practical-next.js-main/04-nextjs-data-flow/consuming-rest-apis-on-the-client-side/components"
+		}
+	],
+	"settings": {}
+}
