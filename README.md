@@ -6,14 +6,14 @@
 [![Star on GitHub](https://img.shields.io/github/stars/Brem0827/Tech-Stack.svg?style=social)](https://github.com/Brem0827/Tech-Stack/stargazers)
 [![Fork on GitHub](https://img.shields.io/github/forks/Brem0827/Tech-Stack.svg?style=social)](https://github.com/Brem0827/Tech-Stack/network/members)
 
-# 🏃Next.js
-### 📔 201930324 이현종
-
 <div align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
     <img src="./image/logo.png" alt="Logo" width="80" height="80">
   </a>
 </div>
+
+# 🏃Next.js
+### 📔 201930324 이현종
 
 <table align="center">
     <tr>
