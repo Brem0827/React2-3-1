@@ -10,9 +10,10 @@
   <a href="https://github.com/othneildrew/Best-README-Template">
     <img src="./image/logo.png" alt="Logo" width="80" height="80">
   </a>
-</div>
 
 <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black"><img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=Next.js&logoColor=white">
+
+</div>
 
 # 🏃Next.js
 ### 📔 201930324 이현종
