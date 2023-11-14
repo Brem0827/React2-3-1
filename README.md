@@ -9,6 +9,12 @@
 # 🏃Next.js
 ### 📔 201930324 이현종
 
+<div align="center">
+  <a href="https://github.com/othneildrew/Best-README-Template">
+    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  </a>
+</div>
+
 <table align="center">
     <tr>
         <td align="center">
