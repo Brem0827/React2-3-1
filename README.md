@@ -62,6 +62,16 @@
 
 </details>
 
+<details><summary>💬 Apollo Client </summary>
+
+- GraphQL와, 클라이언트를 연결해주는 Node.js 패키지
+
+- 프론트엔드에서 다뤄지는 여러가지 데이터를 graphql을 사용해 DB에서 가져올 수 있도록 해줍니다.
+
+- `npm i graphql @apollo/client`
+
+</details>
+
 ---
 # 11주차
 
