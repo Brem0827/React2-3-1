@@ -47,6 +47,210 @@
 9. 💭[11주차](#11주차)➡️
 10. 💭[12주차](#12주차)➡️
 11. 💭[13주차](#13주차)➡️
+12. 💭[14주차](#14주차)➡️
+
+---
+# 14주차
+
+🔋 2023.11.30
+
+<details><summary>💬 Redux </summary>
+
+- JavaScript(자바스트립트) 상태관리 라이브러리이다.
+
+</details>
+
+<details><summary>💬 Redux의 기본 개념 : 세 가지 원칙 </summary>
+
+## Single source of truth
+
+- 동일한 데이터는 항상 같은 곳에서 가지고 온다.
+
+- 즉, 스토어라는 하나뿐인 데이터 공간이 있다는 의미이다.
+
+## State is read-only
+
+- 리액트에서는 setState 메소드를 활용해야만 상태 변경이 가능하다.
+
+- 리덕스에서도 액션이라는 객체를 통해서만 상태를 변경할 수 있다.
+
+## Changes are made with pure functions
+
+- 변경은 순수함수로만 가능하다.
+
+- 리듀서와 연관되는 개념이다.
+
+- Store(스토어) – Action(액션) – Reducer(리듀서)
+
+</details>
+
+<details><summary>💬 Redux의 장점 </summary>
+
+- 상태를 예측 가능하게 만든다. (순수함수를 사용하기 때문)
+
+- 유지보수 (복잡한 상태 관리와 비교)
+
+- 디버깅에 유리 (action과 state log 기록 시) → redux dev tool (크롬 확장)
+
+- 테스트를 붙이기 용의 (순수함수를 사용하기 때문)
+
+</details>
+
+<details><summary>💬 Styled JSX </summary>
+
+- 새로운 스타일링 언어를 배우지 않고 자바스크립트와 CSS규칙을 함께 사용
+
+- Styled JSX는 CSS-in-JS 라이브러리, 즉 CSS 속성 지정을 위해 자바스크립트를 사용할 수 있는 라이브러리 입니다.
+
+```jsx
+
+export default function Button(props) {
+    return(
+        <>
+            <button className="button">{props.children}</button>
+            <style jsx>
+                {`
+                    .button {
+                        padding: 1em;
+                        border-radius: 1em;
+                        border: none;
+                        background: green;
+                        color: white;
+                    }
+                `}
+            </style>
+        </>
+    )
+}
+
+```
+
+</details>
+
+<details><summary>💬 CSS Module </summary>
+
+- 자바스크립트 코드 안에서 정의한 CSS 규칙은 실행 도중 또는 컴파일 시점에 CSS로 변환됩니다.
+
+- 변환 시점은 사용하는 라이브러리나 설정에 따라 다릅니다.
+
+- 대부분의 CSS-in-JS 라이브러리는 IDE나 코드 편집기 등의 개발 도구에 대한 지원이 부족합니다.
+
+- 문법 하이라이팅, 자동 완성, 린팅 등의 기능을 제공하지 않기 때문에 개발자가 불편함을 겪을 수 있습니다.
+
+- 또한 CSS-in-JS 방식을 사용하면 코드 내에서 CSS에 대한 의존성이 점점 더 커지기 떄문에 애플리케이션 번들이 더 커지고 느려지기 쉽습니다.
+
+- 서버가 미리 CSS 규칙을 생성해놓아도 클라이언트에서 리액트 하이드레이션이 끝나면 CSS 규칙을 재생성 해야합니다.
+
+## 자동으로 접두사 추가
+
+- Can I Use 에서 가져온 값을 이용해서 CSS 규칙에 벤더별 접두사를 붙여줍니다.
+
+## 모든 브라우저에서의 플렉스박스 버그 수정
+
+- PostCSS는 커뮤니티에서 엄선한 플렉스박스 이슈를 참고하여 모든 브라우저에서 플렉스박스가 올바르게 작동할 수 있도록 몇 가지 기능을 추가하였습니다.
+
+## IE11 호환성
+
+- PostCSS 컴파일은 새로운 CSS 기능들을 컴파일해서 IE11과 같이 오래된 브라우저에서도 사용할 수 있도록 해줍니다.
+
+- 물론 모든 것을 다 컴파일해주지는 않습니다.
+
+</details>
+
+<details><summary>💬 SASS </summary>
+
+- Styled JSX나 CSS Module과 마찬가지로 Next.js는 기본적으로 SASS를 지원합니다.
+
+- 다만 패키지를 설치해야지만 사용 가능합니다
+
+```jsx
+
+import styles from '../styles/Home.module.scss'
+
+export default function Home() {
+    return (
+        <div className={StyleSheet.homepage}>
+            <h1> Welcome to the CSS Modules example</h1>
+        </div>
+    );
+}
+
+```
+
+```css
+
+.button-danger {
+  @extend .button-default;
+  color: white;
+}
+
+&.danger {
+  color:white
+}
+
+```
+
+</details>
+
+<details><summary>💬 UI 라이브러리 </summary>
+
+- UI 라이브러르, 프레임워크, 유틸리티 기능이 필수는 아닙니다.
+
+- UI 라이브러리의 핵심은 많이 사용하는 기능을 추상화하고 서로 다른 UI 간에도 코드 재사용을 최대화하며, 생산성을 향상시키고 테스트할 뿐만 아니라 UI 컴포넌트에 테마를 적용할 수 있도록 하는 것 입니다.
+
+</details>
+
+<details><summary>💬 Chakra UI </summary>
+
+## 접근성
+
+- 버튼, 모달, 입력 등과 같이 다양한 내장 컴포넌트를 제공하므로 접근하기 쉽습니다.
+
+## 테마
+
+- 레이브러리에서 버튼의 기본 배경색, 모서리 곡률, 패딩 등에 관한 기본 테마를 제공합니다.
+
+- Chakra UI의 내장함수를 사용해서 라이브러리의 컴포넌트와 스타일이나 기본 테마를 변경할 수 있습니다.
+
+## 밝은/어두운 테마
+
+- 밝은 테마와 어두운 테마 모두 지원하며 시스템 설정에 따라 테마를 적용할 수 이씁니다.
+
+## 조합
+
+- Chakra UI의 기본 컴포넌트들을 조립해서 다 많은 컴포넌트를 만들 수 있습니다.
+
+- 라이브러리를 사용해서 마치 레고 블록을 조립하듯 새로운 컴포넌트를 만들 수 있습니다.
+
+## 타입스크립트 지원
+
+- 타입스크립트로 작성되었으며 개발자에게 최고의 개발 경험을 제공합니다.
+
+</details>
+
+<details><summary>💬 TailwindCSS </summary>
+
+## 프레임워크 독립성
+
+- 리액트, 뷰, 앨귤러와 같은 프레임워크나 순수한 HTML 및 자바스크립트에서도 사용할 수 있습니다.
+
+## 테마
+
+- Chakra UI와 마찬가지로 TailwindCSS의 변수값을 조절하여 여러분만의 디자인을 만들 수 있습니다.
+
+## 밝은/어두운 테마 지원
+
+- <html> 요소의 특정 CSS 클래스를 수정해서 어두운 테마를 쉽게 적용하고 해제할 수 있습니다.
+
+## 높은 수준의 최적화
+
+- TailwindCSS에는 많은 CSS 클래스가 있지만 빌드 시점에 사용하지 않는 클래스는 제거됩니다.
+
+## 모바일 지원
+
+- CSS 클래스의 접두사를 활용하여 모바일, 데스크톱, 태블릿 화면에서 원하는 규칙을 지정할 수 있습니다.
+
+</details>
 
 ---
 # 13주차
